@@ -20,3 +20,10 @@ def start():
     '''
     Setup dnsmasq for pxe boot
     '''
+    if __opts__['__role'] !== 'master':
+        while True:
+            log.err('genesis_dhcp: this is only meant to run on master')
+            sleep(100)
+    else:
+        while True:
+            log.info('I'm here');
