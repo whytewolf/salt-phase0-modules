@@ -22,8 +22,4 @@ def start():
     '''
     if __opts__['__role'] !== 'master':
         while True:
-            log.err('genesis_dhcp: this is only meant to run on master')
-            sleep(100)
-    else:
-        while True:
-            log.info('I'm here');
+            log.error('genesis_dhcp: this is only meant to run on master')
