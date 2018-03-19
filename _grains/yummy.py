@@ -19,15 +19,12 @@ def __virtual__():
 
 def yummy():
     yb= yum.YumBase()
-    yum_conf = {}
-    yum_pkgs = pkgs = [{i.name: i.version} for i in  yb.doPackageLists('installed')]
-    yum_repos = [str(i) for i in yb.repos.listEnabled()]
-    # Repos First
-
+    # Grab package list and parse it into nice clean list
+    yum_pkgs = [{pkg.name: pkg.version} for pkg in  yb.doPackageLists('installed')]
+    # grab enabled repo list
+    yum_repos = [str(repo) for repo in yb.repos.listEnabled()]
     yum_grains = {
-            "conf": yum_conf,
             "pkgs": yum_pkgs,
             "repos": yum_repos
             }
     return {"yum": yum_grains}
-
