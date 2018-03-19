@@ -20,7 +20,7 @@ def __virtual__():
 def yummy():
     yb= yum.YumBase()
     yum_conf = {}
-    yum_pkgs = pkgs = [str(i) for i in  yb.doPackageLists('installed')]
+    yum_pkgs = pkgs = [{i.name: i.version} for i in  yb.doPackageLists('installed')]
     yum_repos = [str(i) for i in yb.repos.listEnabled()]
     # Repos First
 
