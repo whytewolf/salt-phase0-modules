@@ -20,7 +20,7 @@ def __virtual__():
 def yummy():
     yb= yum.YumBase()
     # Grab package list and parse it into nice clean list
-    yum_pkgs = [{pkg.name: pkg.version} for pkg in  yb.doPackageLists('installed')]
+    yum_pkgs = {pkg.name: pkg.version for pkg in  yb.doPackageLists('installed')}
     # grab enabled repo list
     yum_repos = [str(repo) for repo in yb.repos.listEnabled()]
     yum_grains = {
