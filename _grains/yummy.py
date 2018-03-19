@@ -24,7 +24,7 @@ def yummy():
     yum_repos = []
     # Repos First
     for i in yb.repos.listEnabled():
-        yum_repos[i]
+        yum_repos[] = i
 
     yum_grains = {
             "conf": yum_conf,
