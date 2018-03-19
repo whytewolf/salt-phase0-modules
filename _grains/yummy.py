@@ -21,7 +21,7 @@ def yummy():
     yb= yum.YumBase()
     yum_conf = {}
     yum_pkgs = {}
-    yum_repos = {}
+    yum_repos = [str(i) for i in yp.repos.listEnabled()]
     # Repos First
 
     yum_grains = {
