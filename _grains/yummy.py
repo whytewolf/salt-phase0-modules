@@ -6,6 +6,15 @@ log = logging.getLogger(__name__)
 
 try:
     import yum
+    from yum.logginglevels import __NO_LOGGING
+    yumLoggers = ['yum.filelogging.RPMInstallCallback','yum.verbose.Repos', 'yum.verbose.plugin', 
+                  'yum.Depsolve', 'yum.verbose', 'yum.plugin', 'yum.Repos', 'yum', 'yum.verbose.YumBase', 
+                  'yum.filelogging', 'yum.verbose.YumPlugins', 'yum.RepoStorage', 'yum.YumBase', 
+                  'yum.filelogging.YumBase', 'yum.verbose.Depsolve']
+    for loggerName in yumLoggers:
+        logger = logging.getLogger(loggerName)
+        logger.setLevel(__NO_LOGGING)
+
     HAS_YUM = True
 except ImportError:
     HAS_YUM = False
